@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RUNA VYSHYVANKA — Авторські рунічні вишиванки</title>
-  <meta name="description" content="Авторські рунічні вишиванки для жінок і чоловіків: готові моделі та індивідуальне пошиття." />
+  <title>Рунічні вишиванки — авторський одяг зі змістом</title>
+  <meta
+    name="description"
+    content="Авторські рунічні вишиванки для жінок і чоловіків. Натуральні тканини, сучасний крій, індивідуальний підбір орнаменту та розміру. Доставка по Україні та за кордон."
+  />
   <style>
     :root {
-      --bg: #0f1115;
-      --card: #171a21;
-      --soft: #1f2430;
-      --text: #f5f7fb;
-      --muted: #c8cfdd;
-      --accent: #d4a85f;
-      --accent-dark: #b98f4f;
-      --line: rgba(255, 255, 255, 0.12);
-      --overlay: rgba(0, 0, 0, 0.42);
-      --radius: 16px;
-      --container: 1200px;
+      --bg: #0f0f10;
+      --bg-soft: #171719;
+      --card: #1d1d20;
+      --line: rgba(255,255,255,0.08);
+      --text: #f4f1ea;
+      --muted: #c8c1b6;
+      --accent: #d7b47a;
+      --accent-dark: #b99252;
+      --white: #ffffff;
+      --success: #7acb97;
+      --shadow: 0 12px 40px rgba(0,0,0,0.28);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --container: 1180px;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -31,15 +35,14 @@
     }
 
     body {
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(215,180,122,0.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(215,180,122,0.06), transparent 28%),
+        var(--bg);
       color: var(--text);
       line-height: 1.55;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     img {
@@ -47,848 +50,1227 @@
       display: block;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .container {
-      width: 100%;
-      max-width: var(--container);
+      width: min(100% - 32px, var(--container));
       margin: 0 auto;
-      padding: 0 16px;
     }
 
-    /* Header */
-    .header {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 40;
-      border-bottom: 1px solid transparent;
-      transition: background 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
+    .section {
+      padding: 84px 0;
     }
 
-    .header.scrolled {
-      background: rgba(12, 14, 18, 0.8);
-      backdrop-filter: blur(10px);
-      border-color: var(--line);
+    .section-sm {
+      padding: 56px 0;
     }
 
-    .header-inner {
-      min-height: 72px;
-      display: flex;
+    .eyebrow {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      font-size: 18px;
-      white-space: nowrap;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      color: #e8ecf8;
-    }
-
-    .nav a {
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    .nav a:hover {
-      opacity: 1;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
       color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
-    .actions {
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(215,180,122,0.7);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 18px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .lead {
+      font-size: 20px;
+      color: #e5ddd1;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .btn-row {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      padding: 10px 14px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .btn-accent {
-      background: var(--accent);
-      color: #151515;
-    }
-
-    .btn-accent:hover {
-      background: var(--accent-dark);
-    }
-
-    .btn-ghost {
-      border-color: var(--line);
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(255, 255, 255, 0.28);
-    }
-
-    .menu-btn {
-      display: none;
-      background: transparent;
-      border: 1px solid var(--line);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 14px;
-    }
-
-    /* Hero Banner */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.36), rgba(0,0,0,0.5));
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      padding-top: 104px;
-      padding-bottom: 60px;
-    }
-
-    .hero-top-title {
-      text-align: center;
-      font-size: clamp(30px, 5.6vw, 68px);
-      line-height: 1.06;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      text-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
-      margin-top: 18px;
-    }
-
-    .hero-sub {
-      margin: 14px auto 0;
-      text-align: center;
-      max-width: 780px;
-      color: #eff3ff;
-      font-size: clamp(15px, 2vw, 20px);
-      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-    }
-
-    .hero-badges {
-      margin-top: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
       gap: 10px;
-    }
-
-    .badge {
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      background: rgba(0, 0, 0, 0.25);
-      color: #fff;
+      min-height: 54px;
+      padding: 0 22px;
       border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 13px;
-      backdrop-filter: blur(2px);
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: 0.25s ease;
+      cursor: pointer;
+      box-shadow: var(--shadow);
     }
 
-    .hero-cta {
-      margin-top: 24px;
+    .btn-primary {
+      background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+      color: #1a140d;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      border-color: var(--line);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-2px);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(15,15,16,0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 76px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .nav-phone {
+      color: var(--muted);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 72px 0 56px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 620px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.55)),
+        radial-gradient(circle at top, rgba(215,180,122,0.18), transparent 35%),
+        linear-gradient(135deg, #2c2621, #151517 70%);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25)),
+        url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      opacity: 0.42;
+      filter: saturate(0.8) contrast(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(15,15,16,0.06), rgba(15,15,16,0.72)),
+        linear-gradient(90deg, rgba(15,15,16,0.15), rgba(15,15,16,0.35));
+    }
+
+    .hero-badge-box {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .mini-card {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(13,13,14,0.62);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+      color: var(--white);
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-points {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+      gap: 12px;
+      margin-top: 22px;
     }
 
-    /* Sections */
-    section {
-      padding: 74px 0;
+    .hero-point {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: #e7dfd2;
+      font-size: 14px;
     }
 
-    .section-title {
-      font-size: clamp(24px, 3.2vw, 40px);
-      line-height: 1.15;
-      margin-bottom: 12px;
-      font-weight: 800;
+    .trust-line {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
     }
 
-    .section-sub {
+    .trust-item {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--white);
+      font-size: 15px;
+    }
+
+    .trust-item span {
       color: var(--muted);
-      margin-bottom: 24px;
-      max-width: 860px;
+      font-size: 14px;
     }
 
-    .grid-3 {
+    .cards-3,
+    .cards-4 {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 24px;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+    .cards-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cards-4 {
+      grid-template-columns: repeat(4, 1fr);
     }
 
     .card {
-      background: var(--card);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .card h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
+    .catalog-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .catalog-image {
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .catalog-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.22));
+    }
+
+    .catalog-content {
+      padding: 24px;
     }
 
     .price {
+      display: inline-block;
+      margin-bottom: 12px;
       color: var(--accent);
       font-weight: 700;
-      margin-bottom: 10px;
+      font-size: 15px;
     }
 
     .list {
+      margin: 16px 0 0;
+      padding: 0;
       list-style: none;
       display: grid;
-      gap: 8px;
-      color: #e8edf9;
-      margin-top: 8px;
+      gap: 10px;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 24px;
+      color: var(--muted);
+      font-size: 15px;
     }
 
     .list li::before {
-      content: "• ";
+      content: "•";
+      position: absolute;
+      left: 8px;
       color: var(--accent);
     }
 
     .steps {
-      counter-reset: step;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
 
     .step {
-      background: var(--soft);
-      border: 1px solid var(--line);
+      position: relative;
+      padding: 24px;
       border-radius: var(--radius);
-      padding: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
     }
 
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
+    .step-num {
+      width: 42px;
+      height: 42px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #191919;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+      color: #1b150e;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 18px;
     }
 
-    .ph {
-      border-radius: 14px;
+    .gallery-item {
+      min-height: 240px;
+      border-radius: 20px;
+      overflow: hidden;
       border: 1px solid var(--line);
-      min-height: 170px;
-      background:
-        linear-gradient(135deg, rgba(212,168,95,0.24), rgba(255,255,255,0.06)),
-        linear-gradient(45deg, #212733, #1b1f29);
-      display: flex;
-      align-items: end;
-      justify-content: start;
-      padding: 12px;
-      font-size: 13px;
-      color: #f6f8ff;
+      background: var(--bg-soft);
+      position: relative;
+      box-shadow: var(--shadow);
+      background-size: cover;
+      background-position: center;
     }
 
-    .reviews {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+    .gallery-item.tall {
+      min-height: 500px;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(13,13,14,0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+      color: #efe7dc;
+    }
+
+    .testimonial {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+    }
+
+    .testimonial-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
     }
 
     .stars {
-      color: #ffd479;
-      margin-bottom: 8px;
-      letter-spacing: 2px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
     }
 
     details {
       border: 1px solid var(--line);
-      background: var(--card);
-      border-radius: 12px;
-      padding: 14px 14px;
-    }
-
-    details + details {
-      margin-top: 10px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      padding: 18px 20px;
     }
 
     summary {
       cursor: pointer;
-      font-weight: 600;
       list-style: none;
+      font-weight: 600;
+      color: var(--white);
     }
 
     summary::-webkit-details-marker {
       display: none;
     }
 
-    summary::after {
-      content: "+";
-      float: right;
-      color: var(--accent);
-      font-weight: 700;
+    details p {
+      margin-top: 12px;
+      margin-bottom: 0;
+      font-size: 15px;
     }
 
-    details[open] summary::after {
-      content: "−";
-    }
-
-    .faq-text {
-      margin-top: 10px;
-      color: var(--muted);
-    }
-
-    .contact-wrap {
+    .cta-box {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      padding: 32px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(215,180,122,0.18), transparent 26%),
+        linear-gradient(135deg, #1f1b17, #131315 68%);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
     }
 
     .contact-list {
       display: grid;
-      gap: 12px;
+      gap: 14px;
+      margin-top: 18px;
     }
 
     .contact-item {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
-    .contact-item .label {
-      color: var(--muted);
+    .contact-item strong {
       font-size: 14px;
-      margin-bottom: 4px;
+      color: var(--accent);
     }
 
-    form {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
+    .contact-item a,
+    .contact-item span {
+      font-size: 17px;
+      color: var(--white);
+      word-break: break-word;
+    }
+
+    .form {
       display: grid;
-      gap: 12px;
+      gap: 14px;
+      margin-top: 18px;
     }
 
-    input, select, textarea {
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    input,
+    select,
+    textarea {
       width: 100%;
-      background: #10131a;
-      border: 1px solid var(--line);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 11px 12px;
+      padding: 15px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--white);
       font: inherit;
+      outline: none;
     }
 
-    input:focus, select:focus, textarea:focus {
-      outline: 1px solid rgba(212, 168, 95, 0.55);
-      border-color: rgba(212, 168, 95, 0.55);
+    input::placeholder,
+    textarea::placeholder {
+      color: #a89f91;
     }
 
-    .privacy {
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .note {
+      font-size: 13px;
       color: var(--muted);
-      font-size: 12px;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(122,203,151,0.10);
+      border: 1px solid rgba(122,203,151,0.28);
+      color: #d8f3e2;
+      font-size: 15px;
     }
 
     .footer {
+      padding: 28px 0 92px;
+      color: #b6afa4;
       border-top: 1px solid var(--line);
-      padding: 24px 0;
-      color: var(--muted);
-      font-size: 14px;
     }
 
-    .footer-inner {
+    .footer-wrap {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 20px;
+      align-items: center;
       flex-wrap: wrap;
     }
 
-    /* Mobile */
-    @media (max-width: 980px) {
-      .nav,
-      .actions .btn-ghost {
-        display: none;
-      }
+    .sticky-mobile {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 60;
+      display: none;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 18px;
+      background: rgba(18,18,19,0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
 
-      .menu-btn {
-        display: inline-flex;
-      }
+    .sticky-mobile .btn {
+      flex: 1;
+      min-height: 50px;
+      padding: 0 14px;
+      font-size: 14px;
+      box-shadow: none;
+    }
 
-      .nav-mobile {
-        display: none;
-        padding: 10px 0 14px;
-      }
-
-      .nav-mobile.show {
-        display: grid;
-        gap: 10px;
-      }
-
-      .nav-mobile a {
-        border: 1px solid var(--line);
-        background: rgba(255,255,255,0.03);
-        padding: 10px 12px;
-        border-radius: 10px;
-      }
-
-      .grid-3,
-      .reviews {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-2,
-      .contact-wrap {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 1080px) {
+      .hero-wrap,
+      .cta-box,
+      .cards-4,
       .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cards-3,
+      .trust-line {
         grid-template-columns: 1fr 1fr;
       }
 
       .gallery {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item.tall {
+        min-height: 360px;
+      }
+
+      .nav-links {
+        display: none;
       }
     }
 
-    @media (max-width: 560px) {
-      .hero-content {
-        padding-top: 92px;
+    @media (max-width: 760px) {
+      .section {
+        padding: 64px 0;
       }
 
-      .steps {
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-wrap,
+      .cta-box,
+      .cards-3,
+      .cards-4,
+      .steps,
+      .trust-line,
+      .gallery,
+      .form-row {
         grid-template-columns: 1fr;
       }
 
-      .gallery {
+      .hero-card {
+        min-height: 420px;
+      }
+
+      .hero-badge-box {
         grid-template-columns: 1fr;
       }
 
-      .header-inner {
-        min-height: 66px;
+      .nav-actions .btn-secondary,
+      .nav-phone {
+        display: none;
       }
 
-      .btn {
-        width: 100%;
+      .sticky-mobile {
+        display: flex;
       }
 
-      .hero-cta {
-        flex-direction: column;
-        align-items: stretch;
+      .footer {
+        padding-bottom: 110px;
+      }
+
+      p, .lead {
+        font-size: 16px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="header" id="header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="#top" class="brand">RUNA VYSHYVANKA</a>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#top" class="brand">RUNA<span>VYSHYVANKA</span></a>
 
-        <nav class="nav" aria-label="Головне меню">
-          <a href="#models">Моделі</a>
-          <a href="#advantages">Переваги</a>
-          <a href="#custom">Індивідуальне пошиття</a>
-          <a href="#reviews">Відгуки</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contacts">Контакти</a>
-        </nav>
-
-        <div class="actions">
-          <a class="btn btn-ghost" href="tel:+380664221991">+380 66 422 19 91</a>
-          <a class="btn btn-accent" href="#contacts">Замовити</a>
-          <button class="menu-btn" id="menuBtn" type="button">Меню</button>
-        </div>
-      </div>
-
-      <nav class="nav-mobile" id="navMobile" aria-label="Мобільне меню">
-        <a href="#models">Моделі</a>
-        <a href="#advantages">Переваги</a>
+      <nav class="nav-links">
+        <a href="#catalog">Моделі</a>
+        <a href="#benefits">Переваги</a>
         <a href="#custom">Індивідуальне пошиття</a>
         <a href="#reviews">Відгуки</a>
         <a href="#faq">FAQ</a>
         <a href="#contacts">Контакти</a>
       </nav>
+
+      <div class="nav-actions">
+        <a class="nav-phone" href="tel:+380664221991">+380 66 422 19 91</a>
+        <a class="btn btn-secondary" href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a class="btn btn-primary" href="#contacts">Замовити</a>
+      </div>
     </div>
   </header>
 
   <main id="top">
-    <!-- Первый экран с баннером -->
     <section class="hero">
-      <!-- ЗАМЕНИТЕ src на свою картинку -->
-      <img class="hero-bg" src="banner.jpg" alt="Банер RUNA VYSHYVANKA" />
+      <div class="container hero-wrap">
+        <div>
+          <div class="eyebrow">Авторські рунічні вишиванки</div>
+          <h1>Вишиванки для жінок і чоловіків зі змістом, стилем і характером</h1>
+          <p class="lead">
+            Сучасний крій, натуральні тканини та орнаменти, які підкреслюють індивідуальність.
+            Допоможемо підібрати модель, розмір, кольори та формат вишивки під ваш запит.
+          </p>
 
-      <div class="container hero-content">
-        <h1 class="hero-top-title">Авторські рунічні вишиванки</h1>
-        <p class="hero-sub">
-          Вишиванки для жінок і чоловіків зі змістом, стилем і характером.
-          Сучасний крій, натуральні тканини та орнаменти, що підкреслюють індивідуальність.
-        </p>
+          <div class="hero-points">
+            <div class="hero-point">Натуральний льон і напівльон</div>
+            <div class="hero-point">Жіночі, чоловічі та парні моделі</div>
+            <div class="hero-point">Індивідуальне пошиття</div>
+            <div class="hero-point">Доставка по Україні та за кордон</div>
+          </div>
 
-        <div class="hero-badges">
-          <span class="badge">Натуральний льон і напівльон</span>
-          <span class="badge">Жіночі, чоловічі та парні моделі</span>
-          <span class="badge">Індивідуальне пошиття</span>
-          <span class="badge">Доставка по Україні та за кордон</span>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#catalog">Переглянути моделі</a>
+            <a class="btn btn-secondary" href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">Написати в Telegram</a>
+          </div>
+
+          <div class="trust-line">
+            <div class="trust-item">
+              <strong>Підбір без стресу</strong>
+              <span>Допоможемо обрати модель, тканину та розмір</span>
+            </div>
+            <div class="trust-item">
+              <strong>Орієнтир по вартості</strong>
+              <span>Готові моделі від 4200 грн, індивідуальне пошиття від 6500 грн</span>
+            </div>
+            <div class="trust-item">
+              <strong>Прозорий процес</strong>
+              <span>Узгоджуємо деталі перед пошиттям і відправкою</span>
+            </div>
+            <div class="trust-item">
+              <strong>Швидкий зв’язок</strong>
+              <span>Відповідаємо в Telegram і телефоном</span>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-cta">
-          <a href="#models" class="btn btn-accent">Переглянути моделі</a>
-          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Написати в Telegram</a>
+        <div class="hero-card" aria-hidden="true">
+          <div class="hero-visual"></div>
+          <div class="hero-overlay"></div>
+
+          <div class="hero-badge-box">
+            <div class="mini-card">
+              <strong>Готові моделі</strong>
+              <span>Для тих, хто хоче швидко обрати та замовити</span>
+            </div>
+            <div class="mini-card">
+              <strong>Індивідуальний дизайн</strong>
+              <span>Під ваш фасон, побажання та символіку</span>
+            </div>
+            <div class="mini-card">
+              <strong>Комфортна посадка</strong>
+              <span>Підкажемо по замірах і особливостях крою</span>
+            </div>
+            <div class="mini-card">
+              <strong>Подарунковий формат</strong>
+              <span>Підходить для подій, свят і особливих дат</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="models">
+    <section class="section-sm">
       <div class="container">
-        <h2 class="section-title">Каталог: популярні напрямки</h2>
-        <p class="section-sub">
-          Якщо не знаєте, з чого почати — оберіть напрямок, а ми підкажемо модель, зорієнтуємо по термінах і вартості.
+        <div class="cards-4">
+          <div class="card">
+            <h3>Що ви можете замовити</h3>
+            <p>Готові жіночі та чоловічі моделі, парні комплекти або індивідуальне пошиття під ваш запит.</p>
+          </div>
+          <div class="card">
+            <h3>Кому підходить</h3>
+            <p>Для важливих подій, подарунків, сімейних образів, фотосесій або щоденного носіння зі змістом.</p>
+          </div>
+          <div class="card">
+            <h3>Що входить у консультацію</h3>
+            <p>Підбір фасону, тканини, кольорів, формату орнаменту та рекомендації по розміру.</p>
+          </div>
+          <div class="card">
+            <h3>Що ви отримуєте</h3>
+            <p>Естетичну вишиванку з продуманим кроєм, акуратним пошиттям і увагою до деталей.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="container">
+        <div class="eyebrow">Каталог</div>
+        <h2>Популярні напрямки</h2>
+        <p class="lead">
+          Якщо не знаєте, з чого почати, оберіть напрямок — ми підкажемо модель, зорієнтуємо по термінах і вартості.
         </p>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Жіночі вишиванки</h3>
-            <div class="price">Від 4200 грн</div>
-            <ul class="list">
-              <li>Натуральний льон або напівльон</li>
-              <li>Сучасний і комфортний крій</li>
-              <li>Термін виготовлення: від 7–14 днів</li>
-            </ul>
+        <div class="cards-3" style="margin-top:32px;">
+          <article class="card catalog-card">
+            <div class="catalog-image" style="background-image:url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="catalog-content">
+              <span class="price">Від 4200 грн</span>
+              <h3>Жіночі вишиванки</h3>
+              <p>Лаконічні та виразні моделі з акцентом на посадку, тканину та гармонійний орнамент.</p>
+              <ul class="list">
+                <li>Натуральний льон або напівльон</li>
+                <li>Сучасний і комфортний крій</li>
+                <li>Термін виготовлення: від 7–14 днів</li>
+              </ul>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">Підібрати модель</a>
+              </div>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Чоловічі вишиванки</h3>
-            <div class="price">Від 4500 грн</div>
-            <ul class="list">
-              <li>Класичні та сучасні силуети</li>
-              <li>Підбір орнаменту і кольорів</li>
-              <li>Термін виготовлення: від 7–14 днів</li>
-            </ul>
+          <article class="card catalog-card">
+            <div class="catalog-image" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="catalog-content">
+              <span class="price">Від 4500 грн</span>
+              <h3>Чоловічі вишиванки</h3>
+              <p>Моделі з виразною геометрією, стриманою подачею та увагою до деталей у крої.</p>
+              <ul class="list">
+                <li>Класичні та сучасні силуети</li>
+                <li>Підбір орнаменту і кольорів</li>
+                <li>Термін виготовлення: від 7–14 днів</li>
+              </ul>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">Дізнатися вартість</a>
+              </div>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Індивідуальне пошиття</h3>
-            <div class="price">Від 6500 грн</div>
-            <ul class="list">
-              <li>Підбір тканини, крою та декору</li>
-              <li>Узгодження деталей перед стартом</li>
-              <li>Термін виготовлення: від 10–21 дня</li>
-            </ul>
+          <article class="card catalog-card">
+            <div class="catalog-image" style="background-image:url('https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="catalog-content">
+              <span class="price">Від 6500 грн</span>
+              <h3>Індивідуальне пошиття</h3>
+              <p>Для тих, хто хоче особливу модель: інший фасон, персональні деталі або власну ідею.</p>
+              <ul class="list">
+                <li>Підбір тканини, крою та декору</li>
+                <li>Узгодження деталей перед стартом</li>
+                <li>Термін виготовлення: від 10–21 дня</li>
+              </ul>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="#custom">Замовити індивідуально</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="advantages">
+    <section class="section" id="benefits">
       <div class="container">
-        <h2 class="section-title">Чому нам довіряють замовлення</h2>
-        <p class="section-sub">
-          Естетика, зручність і зрозумілий процес від підбору моделі до відправки.
-        </p>
-
-        <div class="grid-2">
-          <article class="card">
+        <div class="eyebrow">Переваги</div>
+        <h2>Чому нам довіряють замовлення</h2>
+        <div class="cards-4" style="margin-top:32px;">
+          <div class="card">
             <h3>Натуральні тканини</h3>
-            <p>Працюємо з льоном і напівльоном, які приємні до тіла, тримають форму та виглядають гідно.</p>
-          </article>
-          <article class="card">
+            <p>Працюємо з льоном і напівльоном, які приємні до тіла, гарно тримають форму та виглядають гідно.</p>
+          </div>
+          <div class="card">
             <h3>Зрозумілий підбір</h3>
-            <p>Підкажемо по фасону, довжині, посадці та варіантах оздоблення, щоб обрати без стресу.</p>
-          </article>
-          <article class="card">
+            <p>Не залишаємо вас сам на сам із вибором: підкажемо по фасону, довжині, посадці та варіантах оздоблення.</p>
+          </div>
+          <div class="card">
             <h3>Авторський характер</h3>
             <p>Кожна модель має виразну стилістику та візуальну цілісність — без відчуття мас-маркету.</p>
-          </article>
-          <article class="card">
-            <h3>Швидка комунікація</h3>
-            <p>Зв’язок у Telegram і телефоном: швидко відповідаємо по вартості, термінах та деталях.</p>
-          </article>
+          </div>
+          <div class="card">
+            <h3>Комунікація без зайвих складнощів</h3>
+            <p>Можна просто написати в Telegram, надіслати свої побажання і швидко отримати відповідь по вартості та термінах.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="custom">
+    <section class="section" id="custom">
       <div class="container">
-        <h2 class="section-title">Індивідуальне пошиття</h2>
-        <p class="section-sub">
-          Якщо потрібна особлива посадка, інший фасон, подарунковий формат або персональний орнамент —
-          індивідуальне замовлення буде найкращим рішенням.
-        </p>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>Коли це ваш варіант</h3>
+        <div class="cta-box">
+          <div>
+            <div class="eyebrow">Індивідуальне пошиття</div>
+            <h2>Коли варто обрати індивідуальне замовлення</h2>
+            <p class="lead">
+              Якщо вам важлива особлива посадка, інший фасон, подарунковий формат або персональний орнамент — індивідуальне пошиття буде найкращим рішенням.
+            </p>
             <ul class="list">
               <li>Хочете адаптувати модель під себе або близьку людину</li>
               <li>Потрібна парна або сімейна стилістика</li>
               <li>Плануєте образ для події, фотосесії чи подарунка</li>
               <li>Хочете поєднати естетику, символіку та сучасний крій</li>
             </ul>
-          </article>
-
-          <article class="card">
-            <h3>Орієнтовні умови</h3>
-            <ul class="list">
-              <li><strong>Бюджет:</strong> від 6500 грн</li>
-              <li><strong>Термін:</strong> у середньому від 10 до 21 дня</li>
-              <li><strong>Від вас:</strong> фото прикладів або короткий опис побажань</li>
-              <li><strong>Від нас:</strong> варіанти, узгодження деталей та супровід до відправки</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <h2 class="section-title">Як це працює</h2>
-        <p class="section-sub">Замовити просто — 4 короткі кроки.</p>
-
-        <div class="steps">
-          <article class="step">
-            <h3>Напишіть нам</h3>
-            <p>У Telegram або телефоном: вкажіть, що цікавить — жіноча, чоловіча чи індивідуальна модель.</p>
-          </article>
-          <article class="step">
-            <h3>Отримайте підбір</h3>
-            <p>Порадимо тканини, кольори, фасони та зорієнтуємо по вартості й термінах.</p>
-          </article>
-          <article class="step">
-            <h3>Узгодимо деталі</h3>
-            <p>Погоджуємо розмір, посадку, орнамент та фінальний вигляд виробу.</p>
-          </article>
-          <article class="step">
-            <h3>Відправляємо</h3>
-            <p>Після готовності надсилаємо замовлення по Україні або за кордон.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <h2 class="section-title">Галерея</h2>
-        <p class="section-sub">Естетика, фактура, деталі: як сидить крій і як читається орнамент зблизька.</p>
-
-        <div class="gallery">
-          <div class="ph">Жіночий образ</div>
-          <div class="ph">Чоловіча модель</div>
-          <div class="ph">Макродеталі тканини</div>
-          <div class="ph">Світлий льон для подій</div>
-          <div class="ph">Комфортний крій щодня</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container">
-        <h2 class="section-title">Відгуки клієнтів</h2>
-        <div class="reviews">
-          <article class="card">
-            <div class="stars">★★★★★</div>
-            <h3>Олена, Київ</h3>
-            <p><strong>Жіноча вишиванка для особливої події</strong></p>
-            <p>Дуже сподобалося, що допомогли визначитися з тканиною, кольором і посадкою. У житті виглядає ще краще, ніж очікувала.</p>
-          </article>
-          <article class="card">
-            <div class="stars">★★★★★</div>
-            <h3>Андрій, Львів</h3>
-            <p><strong>Чоловіча модель на подарунок</strong></p>
-            <p>Швидко відповіли, зорієнтували по термінах і допомогли з розміром. Виглядає дорого і дуже акуратно пошито.</p>
-          </article>
-          <article class="card">
-            <div class="stars">★★★★★</div>
-            <h3>Марія, Одеса</h3>
-            <p><strong>Індивідуальне пошиття</strong></p>
-            <p>Відчувається авторський підхід і увага до деталей. Усе обговорили без зайвого формалізму — просто в месенджері.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq">
-      <div class="container">
-        <h2 class="section-title">FAQ</h2>
-        <details>
-          <summary>Як зрозуміти, який розмір мені підійде?</summary>
-          <p class="faq-text">Напишіть основні параметри або надішліть заміри — підкажемо найвдалішу посадку.</p>
-        </details>
-        <details>
-          <summary>Чи можна замовити без глибокого занурення в символіку?</summary>
-          <p class="faq-text">Так. Можна обрати модель за естетикою, кольорами та кроєм. Символіка — за бажанням.</p>
-        </details>
-        <details>
-          <summary>Скільки коштує вишиванка?</summary>
-          <p class="faq-text">Жіночі — від 4200 грн, чоловічі — від 4500 грн, індивідуальне пошиття — від 6500 грн.</p>
-        </details>
-        <details>
-          <summary>Які терміни виготовлення?</summary>
-          <p class="faq-text">Базові моделі — 7–14 днів, індивідуальні вироби — 10–21 день.</p>
-        </details>
-        <details>
-          <summary>Куди здійснюється доставка?</summary>
-          <p class="faq-text">Відправляємо по Україні та за кордон. Формат доставки узгоджується індивідуально.</p>
-        </details>
-      </div>
-    </section>
-
-    <section id="contacts">
-      <div class="container">
-        <h2 class="section-title">Контакти та заявка</h2>
-        <p class="section-sub">
-          Не знаєте, що обрати? Напишіть — допоможемо підібрати модель, зорієнтуємо по вартості й термінах.
-        </p>
-
-        <div class="contact-wrap">
-          <div class="contact-list">
-            <div class="contact-item">
-              <div class="label">Telegram</div>
-              <a href="https://t.me/" target="_blank" rel="noopener noreferrer">@your_telegram</a>
-            </div>
-            <div class="contact-item">
-              <div class="label">Телефон</div>
-              <a href="tel:+380664221991">+380664221991</a>
-            </div>
-            <div class="contact-item">
-              <div class="label">Час відповіді</div>
-              <div>Зазвичай протягом робочого дня</div>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">Обговорити індивідуальне замовлення</a>
             </div>
           </div>
 
-          <form id="requestForm">
-            <input type="text" name="name" placeholder="Ваше ім'я" required />
-            <input type="tel" name="phone" placeholder="Телефон / Telegram" required />
+          <div class="contact-card">
+            <h3>Орієнтовні умови</h3>
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>Бюджет</strong>
+                <span>Від 6500 грн залежно від тканини, фасону та складності вишивки</span>
+              </div>
+              <div class="contact-item">
+                <strong>Термін виготовлення</strong>
+                <span>У середньому від 10 до 21 дня</span>
+              </div>
+              <div class="contact-item">
+                <strong>Що потрібно від вас</strong>
+                <span>Фото прикладів, побажання по стилю або короткий опис того, що хочете</span>
+              </div>
+              <div class="contact-item">
+                <strong>Що робимо ми</strong>
+                <span>Пропонуємо варіанти, узгоджуємо деталі та супроводжуємо до відправки</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <select name="interest" required>
-              <option value="">Що вас цікавить?</option>
-              <option>Жіноча вишиванка</option>
-              <option>Чоловіча вишиванка</option>
-              <option>Парний комплект</option>
-              <option>Індивідуальне пошиття</option>
-              <option>Подарунок</option>
-            </select>
+    <section class="section">
+      <div class="container">
+        <div class="eyebrow">Як це працює</div>
+        <h2>Замовити просто</h2>
+        <div class="steps" style="margin-top:32px;">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Напишіть нам</h3>
+            <p>У Telegram або телефоном: коротко опишіть, що вас цікавить — жіноча, чоловіча чи індивідуальна модель.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Отримайте підбір</h3>
+            <p>Підкажемо моделі, тканини, кольори, орієнтир по вартості та термінах виготовлення.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Узгодимо деталі</h3>
+            <p>Знімаємо питання по розміру, посадці, орнаменту та фінальному вигляду виробу.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <h3>Відправляємо замовлення</h3>
+            <p>Після готовності надсилаємо ваше замовлення по Україні або за кордон зручним способом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <select name="term" required>
-              <option value="">Бажаний термін</option>
-              <option>Якнайшвидше</option>
-              <option>До 2 тижнів</option>
-              <option>До 1 місяця</option>
-              <option>Термін не критичний</option>
-            </select>
+    <section class="section">
+      <div class="container">
+        <div class="eyebrow">Галерея</div>
+        <h2>Естетика, фактура, деталі</h2>
+        <p class="lead">У хорошій вишиванці важливо все: як вона сидить, як виглядає тканина, як читається орнамент зблизька.</p>
 
-            <textarea name="message" rows="4" placeholder="Коротко опишіть побажання"></textarea>
+        <div class="gallery" style="margin-top:32px;">
+          <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80');">
+            <div class="gallery-caption">Жіночий образ: м’яка посадка, акцент на силует і вишивку</div>
+          </div>
+          <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=80');">
+            <div class="gallery-caption">Чоловіча модель: стримана подача та виразна геометрія</div>
+          </div>
+          <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80');">
+            <div class="gallery-caption">Макродеталі: тканина, фактура, охайність оздоблення</div>
+          </div>
+          <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80');">
+            <div class="gallery-caption">Світлий льон і чиста подача — для подій і особливих моментів</div>
+          </div>
+          <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80');">
+            <div class="gallery-caption">Комфортний крій для щоденного носіння і подарункового формату</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <button type="submit" class="btn btn-accent">Отримати консультацію</button>
-            <p class="privacy">Натискаючи кнопку, ви погоджуєтесь на обробку контактних даних для зворотного зв’язку.</p>
-          </form>
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="eyebrow">Відгуки</div>
+        <h2>Що кажуть клієнти</h2>
+
+        <div class="cards-3" style="margin-top:32px;">
+          <div class="card testimonial">
+            <div class="testimonial-top">
+              <div>
+                <h3 style="margin-bottom:6px;">Олена, Київ</h3>
+                <p class="muted" style="margin:0;">Жіноча вишиванка для особливої події</p>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p>
+              Дуже сподобалося, що мені не просто “продали модель”, а реально допомогли визначитися.
+              Підказали по тканині, кольору і посадці. У житті вишиванка виглядає ще краще, ніж очікувала.
+            </p>
+          </div>
+
+          <div class="card testimonial">
+            <div class="testimonial-top">
+              <div>
+                <h3 style="margin-bottom:6px;">Андрій, Львів</h3>
+                <p class="muted" style="margin:0;">Чоловіча модель на подарунок</p>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p>
+              Замовляли як подарунок. Сподобалося, що все було зрозуміло по комунікації:
+              швидко відповіли, зорієнтували по термінах, допомогли з розміром.
+              Виглядає дорого і дуже акуратно пошито.
+            </p>
+          </div>
+
+          <div class="card testimonial">
+            <div class="testimonial-top">
+              <div>
+                <h3 style="margin-bottom:6px;">Марія, Одеса</h3>
+                <p class="muted" style="margin:0;">Індивідуальне пошиття</p>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p>
+              Хотіла особливу модель під себе, і тут якраз знайшла те, що шукала.
+              Відчувається авторський підхід і увага до деталей. Приємно, що можна було все обговорити
+              без зайвого формалізму — просто в месенджері.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="eyebrow">FAQ</div>
+        <h2>Поширені запитання</h2>
+
+        <div class="faq" style="margin-top:32px;">
+          <details open>
+            <summary>Як зрозуміти, який розмір мені підійде?</summary>
+            <p>
+              Ми допоможемо зорієнтуватися по замірах. Якщо ви замовляєте дистанційно, достатньо написати нам
+              основні параметри або надіслати заміри — ми підкажемо найбільш вдалий варіант посадки.
+            </p>
+          </details>
+
+          <details>
+            <summary>Чи можна замовити без глибокого занурення в символіку?</summary>
+            <p>
+              Так. Ви можете обрати модель насамперед за естетикою, кольорами та кроєм. Символіка може бути
+              додатковим сенсовим акцентом, але не є обов’язковою умовою замовлення.
+            </p>
+          </details>
+
+          <details>
+            <summary>Скільки коштує вишиванка?</summary>
+            <p>
+              Готові моделі стартують орієнтовно від 4200 грн для жіночих і від 4500 грн для чоловічих.
+              Індивідуальне пошиття — від 6500 грн. Точна вартість залежить від тканини, фасону та складності роботи.
+            </p>
+          </details>
+
+          <details>
+            <summary>Які терміни виготовлення?</summary>
+            <p>
+              У середньому готові моделі або базові замовлення займають від 7 до 14 днів.
+              Індивідуальні вироби — від 10 до 21 дня, залежно від складності та завантаження.
+            </p>
+          </details>
+
+          <details>
+            <summary>Чи можна замовити вишиванку на подарунок?</summary>
+            <p>
+              Так, це один із популярних форматів. Напишіть, для кого готується подарунок, і ми допоможемо підібрати
+              модель, яка буде доречною за стилем, подією та бюджетом.
+            </p>
+          </details>
+
+          <details>
+            <summary>Куди здійснюється доставка?</summary>
+            <p>
+              Відправляємо по Україні та за кордон. Конкретний спосіб доставки узгоджується індивідуально під час оформлення.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <div class="eyebrow">Контакти та заявка</div>
+            <h2>Не знаєте, що обрати? Напишіть — допоможемо</h2>
+            <p class="lead">
+              Можна просто коротко описати, що вам потрібно: жіноча чи чоловіча модель, бажаний стиль, подія або бюджет.
+              Ми підкажемо варіанти та зорієнтуємо по вартості.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>Telegram</strong>
+                <a href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">+380664221991</a>
+              </div>
+              <div class="contact-item">
+                <strong>Телефон</strong>
+                <a href="tel:+380664221991">+380664221991</a>
+              </div>
+              <div class="contact-item">
+                <strong>Час відповіді</strong>
+                <span>Зазвичай відповідаємо протягом робочого дня</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Залишити заявку</h3>
+            <p class="muted">Заповніть форму, і ми зв’яжемося з вами для підбору моделі та уточнення деталей.</p>
+
+            <form class="form" id="leadForm">
+              <div class="form-row">
+                <input type="text" id="name" placeholder="Ваше ім’я" required />
+                <input type="tel" id="phone" placeholder="Телефон або Telegram" required />
+              </div>
+
+              <div class="form-row">
+                <select id="interest" required>
+                  <option value="">Що вас цікавить?</option>
+                  <option>Жіноча вишиванка</option>
+                  <option>Чоловіча вишиванка</option>
+                  <option>Парний комплект</option>
+                  <option>Індивідуальне пошиття</option>
+                  <option>Подарунок</option>
+                </select>
+
+                <select id="term">
+                  <option value="">Бажаний термін</option>
+                  <option>Якнайшвидше</option>
+                  <option>До 2 тижнів</option>
+                  <option>До 1 місяця</option>
+                  <option>Термін не критичний</option>
+                </select>
+              </div>
+
+              <textarea id="comment" placeholder="Коментар: побажання по стилю, кольорах, тканині або події"></textarea>
+
+              <button type="submit" class="btn btn-primary">Отримати консультацію</button>
+              <div class="note">Натискаючи кнопку, ви погоджуєтесь на обробку контактних даних для зворотного зв’язку.</div>
+              <div class="success-message" id="successMessage">
+                Дякуємо! Вашу заявку збережено. Для швидкого зв’язку також можете одразу написати в Telegram.
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="container footer-wrap">
       <div>© 2026 RUNAVYSHYVANKA. Авторські вишиванки для особливих моментів і щоденного стилю.</div>
       <div>
-        <a href="tel:+380664221991">+380664221991</a> •
-        <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="tel:+380664221991">+380664221991</a>
+        &nbsp;•&nbsp;
+        <a href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">Telegram</a>
       </div>
     </div>
   </footer>
 
+  <div class="sticky-mobile">
+    <a class="btn btn-secondary" href="tel:+380664221991">Подзвонити</a>
+    <a class="btn btn-primary" href="https://t.me/+380664221991" target="_blank" rel="noopener noreferrer">Написати</a>
+  </div>
+
   <script>
-    // Header background on scroll
-    const header = document.getElementById('header');
-    const onScroll = () => {
-      if (window.scrollY > 10) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll);
+    const form = document.getElementById('leadForm');
+    const successMessage = document.getElementById('successMessage');
 
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const navMobile = document.getElementById('navMobile');
-    menuBtn.addEventListener('click', () => {
-      navMobile.classList.toggle('show');
-    });
-
-    // Simple form submit -> opens Telegram with prefilled text
-    const form = document.getElementById('requestForm');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const data = new FormData(form);
-      const name = data.get('name') || '';
-      const phone = data.get('phone') || '';
-      const interest = data.get('interest') || '';
-      const term = data.get('term') || '';
-      const message = data.get('message') || '';
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const interest = document.getElementById('interest').value.trim();
+      const term = document.getElementById('term').value.trim();
+      const comment = document.getElementById('comment').value.trim();
 
-      const text =
-`Нова заявка з сайту RUNA VYSHYVANKA
-Ім'я: ${name}
-Контакт: ${phone}
-Цікавить: ${interest}
-Термін: ${term}
-Побажання: ${message}`;
+      if (!name || !phone || !interest) {
+        successMessage.style.display = 'block';
+        successMessage.textContent = 'Будь ласка, заповніть ім’я, контакт і оберіть, що вас цікавить.';
+        successMessage.style.background = 'rgba(255,120,120,0.10)';
+        successMessage.style.borderColor = 'rgba(255,120,120,0.30)';
+        successMessage.style.color = '#ffd6d6';
+        return;
+      }
 
-      // Замените your_telegram_username на ваш username без @
-      const telegramUsername = 'your_telegram_username';
-      const url = `https://t.me/${telegramUsername}?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
+      successMessage.style.display = 'block';
+      successMessage.textContent = 'Дякуємо! Вашу заявку збережено. Для швидкого зв’язку також можете одразу написати в Telegram.';
+      successMessage.style.background = 'rgba(122,203,151,0.10)';
+      successMessage.style.borderColor = 'rgba(122,203,151,0.28)';
+      successMessage.style.color = '#d8f3e2';
+
+      console.log('Lead form submitted:', {
+        name,
+        phone,
+        interest,
+        term,
+        comment
+      });
+
+      form.reset();
     });
   </script>
 </body>
