@@ -841,7 +841,7 @@
               <label>
                 Бажаний термін
                 <select name="term">
-                  <option value="Як найшвидше">Якнайшвидше</option>
+                  <option value="Якнайшвидше">Якнайшвидше</option>
                   <option value="До 2 тижнів">До 2 тижнів</option>
                   <option value="До 1 місяця">До 1 місяця</option>
                   <option value="Термін не критичний">Термін не критичний</option>
@@ -887,22 +887,23 @@
   
   <script>
       document.getElementById('sendTelegram').addEventListener('click', function() {
-              const form = document.querySelector('# заявка-форма');
+        const form = document.querySelector('# заявка-форма');
   
               // Збираємо дані
-              const formData = new FormData(form);
-              const data = Object.fromEntries(formData.entries());
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
               // Формуємо повідомлення
-              const message = `📋 Нова заявка з офіційного сайту\n\n` +
-                  `👤 Ім’я: ${data.name || '—'}\n` +
-                 `📞 Контакт: ${data.phone || '—'}\n` +
-                 `🎯 Заявка: ${data.type || '—'}\n` +
-                 `⏳ Термін: ${data.term || '—'}\n` +
-                  `💬 Коментар: ${data.comment || '—'}`;
-              const botToken = '8305382969:AAGaGuRbVHVFQo6E1UYQ4gwxzw_EznySkQw';
-              const chatId = '1109352803'; 
-              });
-            </script>
+        const message = `📋 Нова заявка з офіційного сайту\n\n` +
+          `👤 Ім’я: ${data.name || '—'}\n` +
+          `📞 Контакт: ${data.phone || '—'}\n` +
+          `🎯 Заявка: ${data.type || '—'}\n` +
+          `⏳ Термін: ${data.term || '—'}\n` +
+          `💬 Коментар: ${data.comment || '—'}`;
+      const botToken = '8305382969:AAGaGuRbVHVFQo6E1UYQ4gwxzw_EznySkQw';
+      const chatId = '1109352803'; 
+      });
+  </script>
+  
   <script>
     const burger = document.getElementById('burger');
     const mobileNav = document.getElementById('mobileNav');
