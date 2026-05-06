@@ -46,73 +46,40 @@
 
   <div id="result"></div>
 
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
+  document.addEventListener('DOMContentLoaded', function() {
     const tg = window.Telegram.WebApp;
-    tg.expand(); // Розгорнути на весь екран
-
+    tg.expand(); // розгорнути на весь екран
+  
     const btn = document.getElementById('send');
-    const resultDiv = document.getElementById('result');
-
-    btn.addEventListener('click', async function() {
-      const formData = {
+    if (!btn) return;
+  
+    btn.addEventListener('click', function() {
+      // Отримуємо дані з форми
+      const data = {
         type: document.querySelector('select[name="type"]').value,
         term: document.querySelector('select[name="term"]').value,
         name: document.querySelector('input[name="name"]').value.trim(),
         phone: document.querySelector('input[name="phone"]').value.trim(),
         comment: document.querySelector('textarea[name="comment"]').value.trim()
       };
-
-      if (!formData.name || !formData.phone) {
+  
+      // Перевірка
+      if (!data.name || !data.phone) {
         alert('⚠️ Вкажіть ім’я та телефон.');
         return;
       }
-
-      btn.disabled = true;
+  
+      // Надсилаємо дані ботові через tg.sendData()
+      const json = JSON.stringify(data);
+      tg.sendData(json);
+  
+      // Опціонально: показати завантаження
       btn.textContent = 'Надсилаємо...';
-
-      // 🔑 Тут — ваш chat_id або ID групи, куди надходитимуть заявки
-      const CHAT_ID = '987654321'; // ← ЗАМІНИТЬЦЕ!
-      const BOT_TOKEN = '1234567890:ABCdef...'; // ← ЗАМІНИТЬЦЕ!
-
-      try {
-        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: `
-*📋 Нова заявка з Web App RUNA VYSHYVANKA*
-
-👤 *Ім’я:* ${formData.name}
-📞 *Контакт:* ${formData.phone}
-🎯 *Тип:* ${formData.type}
-⏳ *Термін:* ${formData.term}
-💬 *Коментар:* ${formData.comment || '—'}
-            `,
-            parse_mode: 'Markdown'
-          })
-        });
-
-        const data = await res.json();
-        if (data.ok) {
-          resultDiv.innerHTML = '<p class="success">✅ Заявка відправлена! Незабаром зв’яжемося.</p>';
-          btn.textContent = 'Відправлено ✅';
-          setTimeout(() => tg.close(), 2000);
-        } else {
-          throw new Error(data.description || 'Помилка сервера');
-        }
-      } catch (e) {
-        console.error(e);
-        resultDiv.innerHTML = `<p style="color:red">❌ Помилка: ${e.message}</p>`;
-        btn.disabled = false;
-        btn.textContent = 'Спробувати ще раз';
-      }
+      btn.disabled = true;
     });
-
-    // Підготовка до закриття
-    tg.onEvent('web_app_data_received', function(data) {
-      tg.close();
-    });
+  });
   </script>
 </body>
 </html>
