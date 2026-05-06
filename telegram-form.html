@@ -42,42 +42,32 @@
   <label>Коментар</label>
   <textarea name="comment" rows="3" placeholder="Бажано, модель, розмір, колір..."></textarea>
 
-  <button id="send">Отримати консультацію</button>
+  <button id="shareBtn" class="btn btn-primary">Отримати консультацію</button>
 
   <div id="result"></div>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script>
+    <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const tg = window.Telegram.WebApp;
-    tg.expand(); // розгорнути на весь екран
-  
-    const btn = document.getElementById('send');
+    const btn = document.getElementById('shareBtn');
     if (!btn) return;
   
     btn.addEventListener('click', function() {
-      // Отримуємо дані з форми
-      const data = {
-        type: document.querySelector('select[name="type"]').value,
-        term: document.querySelector('select[name="term"]').value,
-        name: document.querySelector('input[name="name"]').value.trim(),
-        phone: document.querySelector('input[name="phone"]').value.trim(),
-        comment: document.querySelector('textarea[name="comment"]').value.trim()
-      };
+      const type = document.querySelector('select[name="type"]').value;
+      const term = document.querySelector('select[name="term"]').value;
+      const name = document.querySelector('input[name="name"]').value.trim();
+      const phone = document.querySelector('input[name="phone"]').value.trim();
+      const comment = document.querySelector('textarea[name="comment"]').value.trim();
   
-      // Перевірка
-      if (!data.name || !data.phone) {
+      if (!name || !phone) {
         alert('⚠️ Вкажіть ім’я та телефон.');
         return;
       }
   
-      // Надсилаємо дані ботові через tg.sendData()
-      const json = JSON.stringify(data);
-      tg.sendData(json);
+      const message = `📋 Нова заявка з сайту RUNA VYSHYVANKA:\n\n👤 Ім’я: ${name}\n📞 Телефон: ${phone}\n🎯 Тип: ${type}\n⏳ Термін: ${term}\n💬 Коментар: ${comment || '—'}`;
   
-      // Опціонально: показати завантаження
-      btn.textContent = 'Надсилаємо...';
-      btn.disabled = true;
+      // Відкриваємо діалог вибору контакту
+      window.location.href = `https://t.me/share/url?url=&text=${encodeURIComponent(message)}`;
     });
   });
   </script>
