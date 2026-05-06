@@ -825,43 +825,42 @@
 
           <div class="card">
             <h3>Залишити заявку</h3>
-            <form id="leadForm">
+            <form id=" заявка-форма">
               <label>
                 Що вас цікавить?
                 <select required="">
                   <option value="">Оберіть варіант</option>
-                  <option>Жіноча вишиванка</option>
-                  <option>Чоловіча вишиванка</option>
-                  <option>Парний комплект</option>
-                  <option>Індивідуальне пошиття</option>
-                  <option>Подарунок</option>
+                  <option value="Жіноча вишиванка">Жіноча вишиванка</option>
+                  <option value="Чоловіча вишиванка">Чоловіча вишиванка</option>
+                  <option value="Парний комплект">Парний комплект</option>
+                  <option value="Індивідуальне пошиття">Індивідуальне пошиття</option>
+                  <option value="Подарунок">Подарунок</option>
                 </select>
               </label>
 
               <label>
                 Бажаний термін
-                <select required="">
-                  <option value="">Оберіть варіант</option>
-                  <option>Якнайшвидше</option>
-                  <option>До 2 тижнів</option>
-                  <option>До 1 місяця</option>
-                  <option>Термін не критичний</option>
+                <select name="term">
+                  <option value="Як найшвидше">Якнайшвидше</option>
+                  <option value="До 2 тижнів">До 2 тижнів</option>
+                  <option value="До 1 місяця">До 1 місяця</option>
+                  <option value="Термін не критичний">Термін не критичний</option>
                 </select>
               </label>
 
               <label>
                 Ваше ім’я
-                <input type="text" required="" placeholder="Ім’я">
+                <input type="text"name="name" required="" placeholder="Ім’я">
               </label>
 
               <label>
                 Телефон або Telegram
-                <input type="text" required="" placeholder="+380...">
+                <input type="tel" name="phone" required="" placeholder="+380...">
               </label>
 
               <label>
                 Коментар
-                <textarea placeholder="Коротко опишіть побажання"></textarea>
+                <textarea name="comment" placeholder="Коротко опишіть побажання"></textarea>
               </label>
 
               <button type="button" id="sendTelegram" class="btn btn-primary">Отримати консультацію</button>
@@ -871,20 +870,19 @@
             <script>
               document.getElementById('sendTelegram').addEventListener('click', function() {
               const form = document.querySelector('# заявка-форма');
-
-                // Збираємо дані
+  
+              // Збираємо дані
               const formData = new FormData(form);
               const data = Object.fromEntries(formData.entries());
-
-                // Формуємо повідомлення
+              // Формуємо повідомлення
               const message = `📋 Нова заявка з офіційного сайту\n\n` +
-                `👤 Ім’я: ${data.name || '—'}\n` +
-                `📞 Контакт: ${data.phone || '—'}\n` +
-                `🎯 Заявка: ${data.type || '—'}\n` +
-                `⏳ Термін: ${data.term || '—'}\n` +
-                `💬 Коментар: ${data.comment || '—'}`;
-
+                  `👤 Ім’я: ${data.name || '—'}\n` +
+                 `📞 Контакт: ${data.phone || '—'}\n` +
+                 `🎯 Заявка: ${data.type || '—'}\n` +
+                 `⏳ Термін: ${data.term || '—'}\n` +
+                  `💬 Коментар: ${data.comment || '—'}`;
               const botToken = '8305382969:AAGaGuRbVHVFQo6E1UYQ4gwxzw_EznySkQw';
+              const chatId = '1109352803'; 
               });
             </script>
           </div>
