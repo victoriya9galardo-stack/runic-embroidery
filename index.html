@@ -561,7 +561,7 @@
 
         <!-- Новый баннер первого экрана -->
         <div class="hero-banner">
-          <img src="banner1.jpg" alt="Авторська вишиванка">
+          <img src="banner3.jpg" alt="Авторська вишиванка">
           <div class="hero-banner-content">
             <h1 class="hero-title">Вишиванки для жінок і чоловіків зі змістом, стилем і характером</h1>
             <div class="hero-actions">
@@ -863,28 +863,10 @@
                 <textarea name="comment" placeholder="Коротко опишіть побажання"></textarea>
               </label>
 
-              <button type="button" id="sendTelegram" class="btn btn-primary">Отримати консультацію</button>
+              <button type="button" id="sendToTelegram" class="btn btn-primary">Отримати консультацію</button>
               <div class="help">Натискаючи кнопку, ви погоджуєтесь на обробку контактних даних для зворотного зв’язку.</div>
               <div class="ok-msg" id="okMsg">Дякуємо! Вашу заявку збережено. Для швидкого зв’язку також можете одразу написати в Telegram.</div>
             </form>
-            <script>
-              document.getElementById('sendTelegram').addEventListener('click', function() {
-              const form = document.querySelector('# заявка-форма');
-  
-              // Збираємо дані
-              const formData = new FormData(form);
-              const data = Object.fromEntries(formData.entries());
-              // Формуємо повідомлення
-              const message = `📋 Нова заявка з офіційного сайту\n\n` +
-                  `👤 Ім’я: ${data.name || '—'}\n` +
-                 `📞 Контакт: ${data.phone || '—'}\n` +
-                 `🎯 Заявка: ${data.type || '—'}\n` +
-                 `⏳ Термін: ${data.term || '—'}\n` +
-                  `💬 Коментар: ${data.comment || '—'}`;
-              const botToken = '8305382969:AAGaGuRbVHVFQo6E1UYQ4gwxzw_EznySkQw';
-              const chatId = '1109352803'; 
-              });
-            </script>
           </div>
         </div>
       </div>
@@ -902,7 +884,25 @@
       </div>
     </div>
   </footer>
-
+  
+  <script>
+      document.getElementById('sendTelegram').addEventListener('click', function() {
+              const form = document.querySelector('# заявка-форма');
+  
+              // Збираємо дані
+              const formData = new FormData(form);
+              const data = Object.fromEntries(formData.entries());
+              // Формуємо повідомлення
+              const message = `📋 Нова заявка з офіційного сайту\n\n` +
+                  `👤 Ім’я: ${data.name || '—'}\n` +
+                 `📞 Контакт: ${data.phone || '—'}\n` +
+                 `🎯 Заявка: ${data.type || '—'}\n` +
+                 `⏳ Термін: ${data.term || '—'}\n` +
+                  `💬 Коментар: ${data.comment || '—'}`;
+              const botToken = '8305382969:AAGaGuRbVHVFQo6E1UYQ4gwxzw_EznySkQw';
+              const chatId = '1109352803'; 
+              });
+            </script>
   <script>
     const burger = document.getElementById('burger');
     const mobileNav = document.getElementById('mobileNav');
